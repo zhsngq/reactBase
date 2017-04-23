@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import Hello from './hello';
+import Hello from './part/hello';
+import List from './part/list';
 
 class App extends Component {
     render() {
         return (
-            <Hello />
+            <div>
+                <Hello />
+                <List />
+            </div>
         );
     }
 }
