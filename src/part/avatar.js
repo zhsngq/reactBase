@@ -9,7 +9,7 @@ class Avatar extends Component {
         <span className="pure-u-1-3" > {this.props.data.name} </span>
         <span className="pure-u-1-3"> {this.props.data.passworld} </span>
       </div>
-      );
+    );
   }
 }
 
