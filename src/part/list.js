@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Post from './post';
 import axios from 'axios';
 
 class List extends Component {
@@ -7,24 +6,39 @@ class List extends Component {
   constructor(props) {
     super(props);
     this.state = { data: [] };
+    this.ajaxData();
+  }
+
+  ajaxData = ()=>{
     axios.get(this.props.url)
       .then(res => {
-        if (res.status === 200)
-          this.setState({ data: res.data });
+        if (res.status === 200) {
+          var befordata = this.state.data;
+          for(var i in res.data){
+            befordata.push(res.data[i]);
+          }
+          this.setState({ data: befordata });
+        }
       });
+  }
+
+  iscroll = () => {
+    if(this.refs.list){
+      // 高度 - 可是区域高度 = 位置
+      if(this.refs.list.scrollHeight - this.refs.list.clientHeight === this.refs.list.scrollTop){
+        this.ajaxData();
+        console.log('到底');
+      }
+    }
   }
 
   render() {
     return (
-      <div className={this.props.type} onClick={this.handleClick}> {
+      <div className='contentList' ref="list" onScroll={this.iscroll}> {
         this.state.data.map((data) => {
-          var children = React.Children.map(this.props.children, function (child) {
-            return React.cloneElement(child, {
-              key:data.id,
-              data:data
-            })
+          return React.Children.map(this.props.children, function (child) {
+            return React.cloneElement(child, { key:data.id, data:data })
           });
-          return children;
         })
       } </div>
     );
