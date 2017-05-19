@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Layout,Tabs } from 'element-react';
+
+import 'element-theme-default';
 
 class Topmenu extends Component {
 
   render() {
     return (
       <div>
-        <span className="pure-u-1-3" > 
-          <Link to="/">index</Link>
-        </span>
-        <span className="pure-u-1-3" > 
-          <Link to="/posts">postList</Link>
-        </span>
-        <span className="pure-u-1-3" > 
-          <Link to="/posts">about</Link>
-        </span>
-        {this.props.children || 'Welcome to ZHSNGQ'}
+        <Layout.Row>
+          <Layout.Col span="24"> <div className="grid-content bg-purple-dark">
+            <Tabs activeName={window.location.hash.replace('#','')} onTabClick={(tab)=>{
+                window.location.hash = tab.props.name;
+              }}>
+              <Tabs.Pane label="用户管理" name="/" ></Tabs.Pane>
+              <Tabs.Pane label="配置管理" name="/posts"></Tabs.Pane>
+            </Tabs>
+          </div></Layout.Col>
+        </Layout.Row>
+        <Layout.Row>
+          <Layout.Col span="24"> <div className="grid-content bg-purple-dark">
+            {this.props.children || 'Welcome to ZHSNGQ'}
+          </div></Layout.Col>
+        </Layout.Row>
       </div>
     );
   }

@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory } from 'react-router';
-import './css/pure.css';
 import './css/my.css';
 
 import Topmenu from './view/Topmenu';

@@ -23,12 +23,9 @@ class List extends Component {
   }
 
   iscroll = () => {
-    if(this.refs.list){
-      // 高度 - 可是区域高度 = 位置
-      if(this.refs.list.scrollHeight - this.refs.list.clientHeight === this.refs.list.scrollTop){
-        this.ajaxData();
-        console.log('到底');
-      }
+    if(this.refs.list.scrollHeight - this.refs.list.clientHeight === this.refs.list.scrollTop){
+      this.ajaxData();
+      console.log('到底');
     }
   }
 
