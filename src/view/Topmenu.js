@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
-import { Layout,Tabs } from 'element-react';
-
-import 'element-theme-default';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import {Tabs, Tab} from 'material-ui/Tabs';
 
 class Topmenu extends Component {
 
+  handleChange = (value)=>{
+    window.location.hash = value;
+  }
+  
   render() {
     return (
       <div>
-        <Layout.Row>
-          <Layout.Col span="24"> <div className="grid-content bg-purple-dark">
-            <Tabs activeName={window.location.hash.replace('#','')} onTabClick={(tab)=>{
-                window.location.hash = tab.props.name;
-              }}>
-              <Tabs.Pane label="用户管理" name="/" ></Tabs.Pane>
-              <Tabs.Pane label="配置管理" name="/posts"></Tabs.Pane>
+        <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+          <div>
+            <Tabs value={window.location.hash.replace('#','')} onChange={this.handleChange} >
+              <Tab label="Tab A" value="/"> </Tab>
+              <Tab label="Tab B" value="/posts"> </Tab>
             </Tabs>
-          </div></Layout.Col>
-        </Layout.Row>
-        <Layout.Row>
-          <Layout.Col span="24"> <div className="grid-content bg-purple-dark">
-            {this.props.children || 'Welcome to ZHSNGQ'}
-          </div></Layout.Col>
-        </Layout.Row>
+            <div>
+              {this.props.children || 'Welcome to ZHSNGQ'}
+            </div>
+          </div>
+        </MuiThemeProvider>
+        
       </div>
     );
   }
