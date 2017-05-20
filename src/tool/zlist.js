@@ -15,7 +15,8 @@ class Zlist extends Component {
         if (res.status === 200) {
           var befordata = this.state.data;
           for(var i in res.data){
-            befordata.push(res.data[i]);
+            if (res.data[i]) 
+              befordata.push(res.data[i]);
           }
           this.setState({ data: befordata });
         }
@@ -25,7 +26,6 @@ class Zlist extends Component {
   iscroll = () => {
     if(this.refs.list.scrollHeight - this.refs.list.clientHeight === this.refs.list.scrollTop){
       this.ajaxData();
-      console.log('到底');
     }
   }
 

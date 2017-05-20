@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Post from './../part/post';
-import Zlist from './../part/zlist';
+import Zlist from './../tool/zlist';
 import {List} from 'material-ui/List';
+import Api from './../site/api';
 
 class Postlist extends Component {
   render() {
     return (
       <List>
-        <Zlist url='http://localhost:9801/api/member'>
+        <Zlist url={new Api().getMember()}>
           <Post />
         </Zlist>
       </List>

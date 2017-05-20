@@ -16,8 +16,9 @@ class Topmenu extends Component {
         <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
           <div>
             <Tabs value={window.location.hash.replace('#','')} onChange={this.handleChange} >
-              <Tab label="Tab A" value="/"> </Tab>
-              <Tab label="Tab B" value="/posts"> </Tab>
+              <Tab label="首页" value="/"> </Tab>
+              <Tab label="帖子" value="/posts"> </Tab>
+              <Tab label="个人中心" value="/member"> </Tab>
             </Tabs>
             <div>
               {this.props.children || 'Welcome to ZHSNGQ'}
