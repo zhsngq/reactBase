@@ -25,7 +25,7 @@ class Zlist extends Component {
 
   iscroll = () => {
     if(this.refs.list.scrollHeight - this.refs.list.clientHeight === this.refs.list.scrollTop){
-      this.ajaxData();
+      // this.ajaxData();
     }
   }
 

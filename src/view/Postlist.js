@@ -8,7 +8,7 @@ class Postlist extends Component {
   render() {
     return (
       <List>
-        <Zlist url={new Api().getMember()}>
+        <Zlist url={new Api().getExperimentList()}>
           <Post />
         </Zlist>
       </List>
