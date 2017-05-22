@@ -1,12 +1,21 @@
 class Api {
 
-    urlHost = 'http://localhost:9801';
+    urlHost = 'http://zhsngq.esy.es';
 
-    urlBasic = '/api'
+    urlBasic = '/source'
 
     getMember = ()=>{
         return this.urlHost+this.urlBasic+'/member';
     }
+
+    getExperimentList = ()=>{
+        return this.urlHost+this.urlBasic+'/experiment_list.php';
+    }
+
+    getExperimentNew = ()=>{
+        return this.urlHost+this.urlBasic+'/experiment_new.php';
+    }
+
 }
 
 export default Api;
