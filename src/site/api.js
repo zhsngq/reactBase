@@ -16,6 +16,10 @@ class Api {
         return this.urlHost+this.urlBasic+'/experiment_new.php';
     }
 
+    getExperimentNow = ()=>{
+        return this.urlHost+this.urlBasic+'/experiment_now.php';
+    }
+
 }
 
 export default Api;

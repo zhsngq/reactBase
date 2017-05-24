@@ -9,7 +9,7 @@ class Experiment extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
         sample_date : new Date(),
         sample_user: '',
         title: '',
@@ -62,7 +62,7 @@ class Experiment extends Component {
   render() {
     return (
         <div>
-            <DatePicker 
+            <DatePicker
               onChange ={this.handleDateChange}
               name='sample_date'
               defaultDate={this.state.sample_date}
@@ -97,10 +97,10 @@ class Experiment extends Component {
               fullWidth={true}
               errorText={!this.state.is_sublimt?"":this.state.medicament?"":"选项必填"}
               floatingLabelText="容剂" />
-            <RaisedButton 
-              label="新建实验" 
+            <RaisedButton
+              label="新建实验"
               onTouchTap={this.saveData}
-              primary={true} 
+              primary={true}
               fullWidth={true} />
         </div>
     );

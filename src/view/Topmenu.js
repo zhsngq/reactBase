@@ -15,7 +15,7 @@ const muiTheme = getMuiTheme({
 
 class Topmenu extends Component {
 
-  handleChange = (value)=>{
+  handleChange=(value)=>{
     window.location.hash = value;
   }
 
@@ -34,7 +34,7 @@ class Topmenu extends Component {
             </div>
           </div>
         </MuiThemeProvider>
-        
+
       </div>
     );
   }
