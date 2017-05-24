@@ -16,15 +16,15 @@ class Post extends Component {
   render() {
     return (
       <Link to={'/now/'+this.props.data.id}>
-      <ListItem  style={{color:darkBlack}} 
-        id={this.props.data.id}
-        primaryText={this.props.data.title}
-        secondaryText={
-          <p onClick={this.goUrl}>
-            <span>{this.props.data.sample_user}</span>
-          </p>
-        } />
-      </Link>
+        <ListItem  style={{color:darkBlack}} 
+          id={this.props.data.id}
+          primaryText={this.props.data.title}
+          secondaryText={
+            <p onClick={this.goUrl}>
+              <span>{this.props.data.sample_user}</span>
+            </p>
+          } />
+        </Link>
     );
   }
 }
