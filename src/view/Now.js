@@ -75,7 +75,7 @@ class Now extends Component {
               <AppBar
                 title={<span style={styles.title}>Title</span>}
                 iconElementLeft={<IconButton><NavigationClose /></IconButton>} />
-              <Chip id='th' backgroundColor={blue300} onTouchTap={this.handleTouchTap} style={styles.chip}>
+              <Chip id='th' backgroundColor={blue300} sd onTouchTap={this.handleTouchTap} style={styles.chip}>
                 Text Avatar Chip
               </Chip>
             </div>
