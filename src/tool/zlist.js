@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Tools from './Tools';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class Zlist extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = {
+      data: [] ,
+      loading : true
+    };
+    this.ajaxData();
+  }
+
+  getLoadIng=(isload)=>{
+    return isload?'none':'block'
+  }
+
+  refresh =()=>{
+    new Tools().setData({
+      this : this
+    },(obj)=>{
+      obj.data.data=[];
+      obj.data.loading = true;
+    });
     this.ajaxData();
   }
 
@@ -13,12 +32,16 @@ class Zlist extends Component {
     axios.get(this.props.url)
       .then(res => {
         if (res.status === 200) {
-          var befordata = this.state.data;
-          for(var i in res.data){
-            if (res.data[i]) 
-              befordata.push(res.data[i]);
-          }
-          this.setState({ data: befordata });
+          new Tools().setData({
+            this : this,
+            res  : res
+          },(obj)=>{
+            for(var i in obj.res.data){
+              if (obj.res.data[i])
+                obj.data.data.push(obj.res.data[i]);
+            }
+            obj.data.loading = false;
+          });
         }
       });
   }
@@ -30,14 +53,18 @@ class Zlist extends Component {
   }
 
   render() {
+    var _this =this;
     return (
-      <div className='contentList' ref="list" onScroll={this.iscroll}> {
-        this.state.data.map((data) => {
-          return React.Children.map(this.props.children, function (child) {
-            return React.cloneElement(child, { key:data.id, data:data })
-          });
-        })
-      } </div>
+      <div>
+        <div style={{'display':this.getLoadIng(this.state.loading)}}> <div className='contentList' ref="list" onScroll={this.iscroll}> {
+          this.state.data.map((data) => {
+            return React.Children.map(this.props.children, function (child) {
+              return React.cloneElement(child, { key:data.id, data:data,refresh:_this.refresh })
+            });
+          })
+        } </div></div>
+        <div style={{'display':this.getLoadIng(!this.state.loading),'text-align': 'center'}}> <CircularProgress /> </div>
+      </div>
     );
   }
 }

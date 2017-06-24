@@ -20,6 +20,19 @@ class Api {
         return this.urlHost+this.urlBasic+'/experiment_now.php';
     }
 
+    getRestfulNew = ()=>{
+        return this.urlHost+this.urlBasic+'/restful_new.php';
+    }
+
+    getRestfulDel = ()=>{
+        return this.urlHost+this.urlBasic+'/restful_del.php';
+    }
+
+    getExperimentDel= ()=>{
+        return this.urlHost+this.urlBasic+'/experiment_del.php';
+    }
+
+
 }
 
 export default Api;

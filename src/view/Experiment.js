@@ -96,11 +96,11 @@ class Experiment extends Component {
               defaultValue={this.state.medicament}
               fullWidth={true}
               errorText={!this.state.is_sublimt?"":this.state.medicament?"":"选项必填"}
-              floatingLabelText="容剂" />
-            <RaisedButton 
-              label="新建实验" 
+              floatingLabelText="溶剂" />
+            <RaisedButton
+              label="新建实验"
               onTouchTap={this.saveData}
-              primary={true} 
+              primary={true}
               fullWidth={true} />
         </div>
     );
